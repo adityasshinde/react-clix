@@ -1,0 +1,106 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+<% if (isTypeScript) { %>
+import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import type { RootState } from '../store'; // Assuming RootState is defined in store.tsx
+
+// Define types for the API responses and requests
+type Example = {
+  id: string;
+  name: string;
+  // Add more fields as needed
+};
+
+type CreateExampleRequest = {
+  name: string;
+  // Add more fields as needed
+};
+
+type UpdateExampleRequest = {
+  id: string;
+  name: string;
+  // Add more fields as needed
+};
+<% } %>
+
+export const <%= apiName %> = createApi({
+  reducerPath: '<%= apiName %>',
+  baseQuery: fetchBaseQuery({
+    baseUrl: '/<%= apiName %>',
+    prepareHeaders: (headers, { getState }<% if (isTypeScript) { %>: { getState: () => RootState }<% } %>) => {
+      const tokenFromState = getState().auth.token;
+      const tokenFromLocalStorage = localStorage.getItem('authToken');
+      const token = tokenFromState || tokenFromLocalStorage;
+
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
+
+      return headers;
+    },
+  })<% if (isTypeScript) { %> as BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError><% } %>,
+  endpoints: (builder<% if (isTypeScript) { %>) => ({
+    getExample: builder.query<Example, string>({
+      query: (id) => `example/${id}`,
+    }),
+    createExample: builder.mutation<Example, CreateExampleRequest>({
+      query: (data) => ({
+        url: 'example',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    updateExample: builder.mutation<Example, UpdateExampleRequest>({
+      query: ({ id, ...data }) => ({
+        url: `example/${id}`,
+        method: 'PUT',
+        body: data,
+      }),
+    }),
+    deleteExample: builder.mutation<Example, string>({
+      query: (id) => ({
+        url: `example/${id}`,
+        method: 'DELETE',
+      }),
+    }),
+  })<% } else { %>) => ({
+    getExample: builder.query({
+      query: (id) => `example/${id}`,
+    }),
+    createExample: builder.mutation({
+      query: (data) => ({
+        url: 'example',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    updateExample: builder.mutation({
+      query: ({ id, ...data }) => ({
+        url: `example/${id}`,
+        method: 'PUT',
+        body: data,
+      }),
+    }),
+    deleteExample: builder.mutation({
+      query: (id) => ({
+        url: `example/${id}`,
+        method: 'DELETE',
+      }),
+    }),
+  })<% } %>,
+});
+
+<% if (isTypeScript) { %>
+export const { 
+  useGetExampleQuery, 
+  useCreateExampleMutation, 
+  useUpdateExampleMutation, 
+  useDeleteExampleMutation 
+} = <%= apiName %>;
+<% } else { %>
+export const { 
+  useGetExampleQuery, 
+  useCreateExampleMutation, 
+  useUpdateExampleMutation, 
+  useDeleteExampleMutation 
+} = <%= apiName %>;
+<% } %>

@@ -1,0 +1,38 @@
+{
+  "name": "react-clix",
+  "version": "1.0.0",
+  "description": "A CLI tool for scaffolding React projects with Redux and RTK Query.",
+  "main": "bin/index.js",
+  "bin": {
+    "react-clix": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run build",
+    "build": "echo 'Build step (e.g., transpile TypeScript or minify code) can be added here'"
+  },
+  "keywords": [
+    "cli",
+    "clix",
+    "react-cli",
+    "react-clix",
+    "scaffold",
+    "react-scaffold",
+    "cli-tool",
+    "react-cli-tool",
+    "react",
+    "redux",
+    "rtk",
+    "query",
+    "tool"
+  ],
+  "author": "Aditya Shinde",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "ejs": "^3.1.10",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^11.0.1"
+  }
+}

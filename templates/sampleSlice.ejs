@@ -1,0 +1,41 @@
+import { createSlice<% if (isTypeScript) { %>, PayloadAction<% } %> } from '@reduxjs/toolkit';
+
+<% if (isTypeScript) { %>
+//import RootState from store
+import { RootState } from '../store';
+// Define the initial state type
+interface <%= sliceName.charAt(0).toUpperCase() + sliceName.slice(1) %>State {
+  property: string;
+}
+
+// Set up the initial state
+const initialState: <%= sliceName.charAt(0).toUpperCase() + sliceName.slice(1) %>State = {
+  property: 'This is a sample property',
+};
+<% } else { %>
+const initialState = {
+  property: 'This is a sample property',
+};
+<% } %>
+
+const <%= sliceName %>Slice = createSlice({
+  name: '<%= sliceName %>',
+  initialState,
+  reducers: {
+    sampleReducer: (state<% if (isTypeScript) { %>, action: PayloadAction<any><% } %>) => {
+      console.log(state);
+    },
+    // Add more reducers here if needed
+  },
+});
+
+export const { sampleReducer } = <%= sliceName %>Slice.actions;
+
+<% if (isTypeScript) { %>
+// Selector with proper typing
+export const select<%= sliceName.charAt(0).toUpperCase() + sliceName.slice(1) %> = (state: RootState) => state.<%= sliceName %>;
+<% } else { %>
+export const select<%= sliceName.charAt(0).toUpperCase() + sliceName.slice(1) %> = (state) => state.<%= sliceName %>;
+<% } %>
+
+export default <%= sliceName %>Slice.reducer;
