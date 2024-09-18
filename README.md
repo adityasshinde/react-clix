@@ -10,16 +10,36 @@ To install `react-clix` globally, run:
 npm install -g react-clix
 ```
 
+Alternatively, if you do not want to install it globally, you can install it locally in your project:
+
+```bash
+npm install react-clix --save-dev
+```
+
+After installing locally, you can run the commands using `npx`:
+
+```bash
+npx react-clix <command>
+```
+
 ## Commands
 
 ### 1. `create-app <name>`
 
 Creates a new React application with an optional TypeScript setup.
 
-#### Usage:
+#### Global Usage:
 
 ```bash
 react-clix create-app MyApp
+```
+
+#### Local Usage:
+
+If you have installed `react-clix` locally in your project, run:
+
+```bash
+npx react-clix create-app MyApp
 ```
 
 #### Options:
@@ -32,7 +52,11 @@ react-clix create-app MyApp
 react-clix create-app MyApp -t
 ```
 
-This will create a new React app named `MyApp` using the TypeScript template.
+Or, using `npx` for local installation:
+
+```bash
+npx react-clix create-app MyApp -t
+```
 
 ---
 
@@ -40,22 +64,33 @@ This will create a new React app named `MyApp` using the TypeScript template.
 
 Initializes a Redux store in an existing React project. This command will create a `store.js` file in the `src` directory, including basic Redux setup and configuration.
 
-#### Usage:
+#### Global Usage:
 
 ```bash
 react-clix init-redux
 ```
 
-#### Example:
+#### Local Usage:
 
-Run this command inside an existing React project:
+If `react-clix` is installed locally, run:
+
+```bash
+npx react-clix init-redux
+```
+
+#### Example:
 
 ```bash
 cd my-existing-react-app
 react-clix init-redux
 ```
 
-This will add the necessary files to set up Redux in your project.
+Or:
+
+```bash
+cd my-existing-react-app
+npx react-clix init-redux
+```
 
 ---
 
@@ -63,10 +98,18 @@ This will add the necessary files to set up Redux in your project.
 
 Adds a new RTK Query API with the specified name to the Redux store. It generates the API slice in the `src/services/` directory and sets up everything for you.
 
-#### Usage:
+#### Global Usage:
 
 ```bash
 react-clix add-rtk-api <apiName>
+```
+
+#### Local Usage:
+
+If `react-clix` is installed locally, run:
+
+```bash
+npx react-clix add-rtk-api <apiName>
 ```
 
 #### Example:
@@ -75,7 +118,11 @@ react-clix add-rtk-api <apiName>
 react-clix add-rtk-api authApi
 ```
 
-This will create an `authApi` in the `src/services/` directory with proper RTK Query configuration.
+Or:
+
+```bash
+npx react-clix add-rtk-api authApi
+```
 
 ---
 
@@ -83,10 +130,18 @@ This will create an `authApi` in the `src/services/` directory with proper RTK Q
 
 Creates a new Redux slice with the specified name and integrates it into the Redux store. It also updates the necessary files to include hooks for easy usage within React components.
 
-#### Usage:
+#### Global Usage:
 
 ```bash
 react-clix create-slice <sliceName>
+```
+
+#### Local Usage:
+
+If `react-clix` is installed locally, run:
+
+```bash
+npx react-clix create-slice <sliceName>
 ```
 
 #### Example:
@@ -95,7 +150,11 @@ react-clix create-slice <sliceName>
 react-clix create-slice userSlice
 ```
 
-This will create a Redux slice named `userSlice` and automatically update the store configuration.
+Or:
+
+```bash
+npx react-clix create-slice userSlice
+```
 
 ---
 
@@ -103,10 +162,18 @@ This will create a Redux slice named `userSlice` and automatically update the st
 
 Generates a new React component in the specified path under the `src` directory. By default, it creates the component in the `src/components` folder. You can also specify a relative path.
 
-#### Usage:
+#### Global Usage:
 
 ```bash
 react-clix create-component <componentName>
+```
+
+#### Local Usage:
+
+If `react-clix` is installed locally, run:
+
+```bash
+npx react-clix create-component <componentName>
 ```
 
 #### Options:
@@ -119,7 +186,11 @@ react-clix create-component <componentName>
 react-clix create-component MyComponent -p components/ui
 ```
 
-This will create `MyComponent.jsx/tsx` inside `src/components/ui/` without creating an additional folder for the component.
+Or:
+
+```bash
+npx react-clix create-component MyComponent -p components/ui
+```
 
 ---
 
@@ -127,44 +198,75 @@ This will create `MyComponent.jsx/tsx` inside `src/components/ui/` without creat
 
 1. **Creating a New React App:**
 
+   Global:
+
    ```bash
    react-clix create-app MyNewApp -t
    ```
 
-   This will create a new React app with TypeScript support.
+   Locally:
+
+   ```bash
+   npx react-clix create-app MyNewApp -t
+   ```
 
 2. **Initializing Redux in an Existing App:**
+
+   Global:
 
    ```bash
    cd MyExistingApp
    react-clix init-redux
    ```
 
-   This will set up Redux for state management in your existing app.
+   Locally:
+
+   ```bash
+   cd MyExistingApp
+   npx react-clix init-redux
+   ```
 
 3. **Adding an RTK Query API:**
+
+   Global:
 
    ```bash
    react-clix add-rtk-api productsApi
    ```
 
-   This will create a new `productsApi` service for RTK Query in your project.
+   Locally:
+
+   ```bash
+   npx react-clix add-rtk-api productsApi
+   ```
 
 4. **Creating a Redux Slice:**
+
+   Global:
 
    ```bash
    react-clix create-slice cartSlice
    ```
 
-   This will add a new `cartSlice` to manage cart-related state.
+   Locally:
+
+   ```bash
+   npx react-clix create-slice cartSlice
+   ```
 
 5. **Creating a React Component:**
+
+   Global:
 
    ```bash
    react-clix create-component Button -p components/common
    ```
 
-   This will create a `Button.jsx/tsx` file inside `src/components/common/`.
+   Locally:
+
+   ```bash
+   npx react-clix create-component Button -p components/common
+   ```
 
 ## Installation for Development
 
@@ -195,4 +297,3 @@ Contributions are welcome! Please open an issue or submit a pull request to cont
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
-
