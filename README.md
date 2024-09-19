@@ -31,7 +31,7 @@ Creates a new React application with an optional TypeScript setup.
 #### Global Usage:
 
 ```bash
-react-clix create-app MyApp
+react-clix create-app my-app
 ```
 
 #### Local Usage:
@@ -39,7 +39,7 @@ react-clix create-app MyApp
 If you have installed `react-clix` locally in your project, run:
 
 ```bash
-npx react-clix create-app MyApp
+npx react-clix create-app my-app
 ```
 
 #### Options:
@@ -49,13 +49,13 @@ npx react-clix create-app MyApp
 #### Example:
 
 ```bash
-react-clix create-app MyApp -t
+react-clix create-app my-app -t
 ```
 
 Or, using `npx` for local installation:
 
 ```bash
-npx react-clix create-app MyApp -t
+npx react-clix create-app my-app -t
 ```
 
 ---
