@@ -1,6 +1,6 @@
 {
   "name": "react-clix",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A CLI tool for scaffolding React projects with Redux and RTK Query.",
   "main": "bin/index.js",
   "bin": {
